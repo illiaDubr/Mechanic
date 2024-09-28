@@ -7,15 +7,15 @@ import { path } from "./config/gulp-settings.js";
 
 // Передаємо значення у глобальну змінну
 global.app = {
-	isBuild: process.argv.includes('--build'),
-	isDev: !process.argv.includes('--build'),
-	isWebP: !process.argv.includes('--nowebp'),
-	isImgOpt: !process.argv.includes('--noimgopt'),
-	isFontsReW: process.argv.includes('--rewrite'),
-	gulp: gulp,
-	path: path,
-	plugins: plugins
-}
+  isBuild: process.argv.includes("--build"),
+  isDev: !process.argv.includes("--build"),
+  isWebP: !process.argv.includes("--nowebp"),
+  isImgOpt: !process.argv.includes("--noimgopt"),
+  isFontsReW: process.argv.includes("--rewrite"),
+  gulp: gulp,
+  path: path,
+  plugins: plugins,
+};
 
 // Імпорт завдань
 import { reset } from "./config/gulp-tasks/reset.js";
@@ -35,18 +35,23 @@ const fonts = gulp.series(reset, otfToTtf, ttfToWoff, fonstStyle);
 // Основні завдання виконуватимемо паралельно після обробки шрифтів
 const devTasks = gulp.parallel(fonts, gitignore);
 // Основні завдання виконуватимемо паралельно після обробки шрифтів
-const buildTasks = gulp.series(fonts, jsDev, js, gulp.parallel(html, css, images, gitignore));
+const buildTasks = gulp.series(
+  fonts,
+  jsDev,
+  js,
+  gulp.parallel(html, css, images, gitignore)
+);
 
 // Експорт завдань
-export { html }
-export { css }
-export { js }
-export { jsDev }
-export { images }
-export { fonts }
-export { sprite }
-export { ftp }
-export { zip }
+export { html };
+export { css };
+export { js };
+export { jsDev };
+export { images };
+export { fonts };
+export { sprite };
+export { ftp };
+export { zip };
 
 // Побудова сценаріїв виконання завдань
 const development = gulp.series(devTasks);
@@ -55,16 +60,10 @@ const deployFTP = gulp.series(buildTasks, ftp);
 const deployZIP = gulp.series(buildTasks, zip);
 
 // Експорт сценаріїв
-export { development }
-export { build }
-export { deployFTP }
-export { deployZIP }
+export { development };
+export { build };
+export { deployFTP };
+export { deployZIP };
 
 // Виконання сценарію за замовчуванням
-gulp.task('default', development);
-
-
-
-
-
-
+gulp.task("default", development);

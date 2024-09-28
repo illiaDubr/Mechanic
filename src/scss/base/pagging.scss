@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .pagging {
 	display: flex;
 	align-items: center;
@@ -17,3 +18,24 @@
 		}
 	}
 }
+=======
+.pagging {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	// .pagging__arrow
+	&__arrow {
+	}
+	// .pagging__list
+	&__list {
+		display: flex;
+		li {
+		}
+	}
+	// .pagging__item
+	&__item {
+		&._active {
+		}
+	}
+}
+>>>>>>> 23f5077db344d033c4b5c6bfc5bfd099b304678e

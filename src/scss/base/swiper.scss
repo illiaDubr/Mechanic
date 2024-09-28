@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .swiper {
 	overflow: hidden;
 }
@@ -36,3 +37,43 @@
 .swiper-button-lock {
 	display: none !important;
 }
+=======
+.swiper {
+	overflow: hidden;
+}
+.swiper-initialized {
+	touch-action: pan-y;
+}
+.swiper-wrapper {
+	width: 100%;
+	height: 100%;
+	box-sizing: content-box;
+	display: flex;
+	position: relative;
+}
+.swiper-vertical {
+	.swiper-wrapper {
+		flex-direction: column;
+	}
+}
+.swiper-autoheight {
+	.swiper-wrapper {
+		align-items: flex-start;
+	}
+}
+.swiper-initialized {
+	.swiper-slide {
+		flex-shrink: 0;
+		// transition-property: transform;
+	}
+}
+.swiper-android {
+	.swiper-slide,
+	.swiper-wrapper {
+		transform: translate3d(0px, 0, 0);
+	}
+}
+.swiper-button-lock {
+	display: none !important;
+}
+>>>>>>> 23f5077db344d033c4b5c6bfc5bfd099b304678e

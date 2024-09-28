@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .tabs {
 	// .tabs__navigation
 	&__navigation {
@@ -21,3 +22,28 @@
 	&__body {
 	}
 }
+=======
+.tabs {
+	// .tabs__navigation
+	&__navigation {
+		display: flex;
+	}
+	// .tabs__title
+	&__title {
+		border: 1px solid #eee;
+		padding: toRem(10) toRem(15);
+		border-radius: toRem(5);
+		&._tab-active {
+			border: 1px solid #000;
+		}
+	}
+	// .tabs__content
+	&__content {
+		border: 1px solid #eee;
+		padding: toRem(10) toRem(15);
+	}
+	// .tabs__body
+	&__body {
+	}
+}
+>>>>>>> 23f5077db344d033c4b5c6bfc5bfd099b304678e

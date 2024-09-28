@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [data-ripple] {
 	position: relative;
 	overflow: hidden;
@@ -19,3 +20,26 @@
 		opacity: 0;
 	}
 }
+=======
+[data-ripple] {
+	position: relative;
+	overflow: hidden;
+}
+.ripple {
+	position: absolute;
+	border-radius: 50%;
+	background-color: rgba(255, 255, 255, 0.3);
+	border: 1px solid rgba(255, 255, 255, 0.5);
+
+	animation: button-circle 1.5s ease forwards;
+}
+@keyframes button-circle {
+	0% {
+		transform: scale(0);
+	}
+	100% {
+		transform: scale(10);
+		opacity: 0;
+	}
+}
+>>>>>>> 23f5077db344d033c4b5c6bfc5bfd099b304678e

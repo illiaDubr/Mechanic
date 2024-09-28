@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [data-showmore] {
 }
 [data-showmore-content] {
@@ -15,3 +16,22 @@
 		}
 	}
 }
+=======
+[data-showmore] {
+}
+[data-showmore-content] {
+}
+[data-showmore-button] {
+	span {
+		&:last-child {
+			display: none;
+		}
+		._showmore-active & {
+			display: none;
+			&:last-child {
+				display: block;
+			}
+		}
+	}
+}
+>>>>>>> 23f5077db344d033c4b5c6bfc5bfd099b304678e
