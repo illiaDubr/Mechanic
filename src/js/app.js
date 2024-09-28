@@ -280,105 +280,6 @@ document.addEventListener("mousemove", function (e) {
 
 //=====================================================================================
 
-//
-
-// document.addEventListener("DOMContentLoaded", function () {
-//   const slides = [
-//     {
-//       number: "01",
-//       title: "Receive a Request",
-//       description:
-//         "Get notified of a new request and choose to accept it based on your availability.",
-//     },
-//     {
-//       number: "02",
-//       title: "Fast and Reliable Service",
-//       description:
-//         "Instant access to qualified professionals ready to assist at any time.",
-//     },
-//     {
-//       number: "03",
-//       title: "Trusted by Thousands",
-//       description:
-//         "Our platform is used by thousands of customers, guaranteeing quality service and support.",
-//     },
-//     {
-//       number: "04",
-//       title: "Efficient Workflow",
-//       description:
-//         "Our system ensures that every task is handled efficiently and effectively.",
-//     },
-//   ];
-
-//   let currentIndex = 0;
-//   const numberElement = document.querySelector(".number");
-//   const titleElement = document.querySelector(".title");
-//   const descriptionElement = document.querySelector(".description");
-//   const carousel = document.getElementById("carousel");
-//   const myDiv = document.getElementById("myDiv"); // Element for data-no-event
-//   let timeoutId; // To track timeout
-
-//   // Function to update slide content
-//   function updateSlide(index) {
-//     const slide = slides[index];
-//     // Fade out first
-//     numberElement.classList.add("fade-out");
-//     titleElement.classList.add("fade-out");
-//     descriptionElement.classList.add("fade-out");
-
-//     // After the fade out animation, update the text and fade in
-//     setTimeout(() => {
-//       numberElement.textContent = slide.number;
-//       titleElement.textContent = slide.title;
-//       descriptionElement.textContent = slide.description;
-
-//       numberElement.classList.remove("fade-out");
-//       titleElement.classList.remove("fade-out");
-//       descriptionElement.classList.remove("fade-out");
-//     }, 500); // 0.5 seconds delay to match the fade-out effect
-
-//     // Handle data-no-event attribute
-//     if (index === 1) {
-//       myDiv.setAttribute("data-no-event", "true");
-//       // If there is a timeout running, clear it
-//       clearTimeout(timeoutId);
-//     } else if (index === 3) {
-//       // Set timeout to remove data-no-event after 1 second when on the 4th slide
-//       timeoutId = setTimeout(() => {
-//         myDiv.removeAttribute("data-no-event");
-//       }, 1000); // Delay of 1 second
-//     } else if (index === 0) {
-//       // Set timeout to remove data-no-event after 1 second when on the 4th slide
-//       timeoutId = setTimeout(() => {
-//         myDiv.removeAttribute("data-no-event");
-//       }, 1000); // Delay of 1 second
-//     }
-
-//     console.log("Current Slide Index:", index);
-//   }
-
-//   // Initialize the first slide
-//   updateSlide(currentIndex);
-
-//   // Event listener for wheel scroll
-//   carousel.addEventListener("wheel", function (event) {
-//     if (event.deltaY > 0) {
-//       // Scroll down
-//       if (currentIndex < slides.length - 1) {
-//         currentIndex = (currentIndex + 1) % slides.length;
-//       }
-//     } else {
-//       // Scroll up
-//       if (currentIndex > 0) {
-//         currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-//       }
-//     }
-
-//     // Update the slide
-//     updateSlide(currentIndex);
-//   });
-// });
-
 document.addEventListener("DOMContentLoaded", function () {
   const slides = [
     {
@@ -412,14 +313,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const titleElement = document.querySelector(".title");
   const descriptionElement = document.querySelector(".description");
   const carousel = document.getElementById("carousel");
-  const myDiv = document.getElementById("myDiv"); // Element for data-no-event
-  let timeoutId; // To track timeout
+  const myDiv = document.getElementById("myDiv");
+  let timeoutId;
 
-  // Variables for touch events
+  // Добавляем кнопки
+  const arrowLeft = document.getElementById("arrow_left");
+  const arrowRight = document.getElementById("arrow_right");
+
   let touchStartY = 0;
   let touchEndY = 0;
 
-  // Function to update slide content
   function updateSlide(index) {
     const slide = slides[index];
     numberElement.classList.add("fade-out");
@@ -436,7 +339,6 @@ document.addEventListener("DOMContentLoaded", function () {
       descriptionElement.classList.remove("fade-out");
     }, 500);
 
-    // Handle data-no-event attribute
     if (index === 1) {
       myDiv.setAttribute("data-no-event", "true");
       clearTimeout(timeoutId);
@@ -449,10 +351,10 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Current Slide Index:", index);
   }
 
-  // Initialize the first slide
+  //first slide
   updateSlide(currentIndex);
 
-  // Event listener for wheel scroll
+  //wheel scroll
   carousel.addEventListener("wheel", function (event) {
     if (event.deltaY > 0) {
       if (currentIndex < slides.length - 1) {
@@ -466,28 +368,46 @@ document.addEventListener("DOMContentLoaded", function () {
     updateSlide(currentIndex);
   });
 
-  // Touch events for mobile swipe
-  carousel.addEventListener("touchstart", function (event) {
-    touchStartY = event.touches[0].clientX;
+  // Touch events
+  // carousel.addEventListener("touchstart", function (event) {
+  //   touchStartY = event.touches[0].clientX;
+  // });
+
+  // carousel.addEventListener("touchmove", function (event) {
+  //   touchEndY = event.touches[0].clientX;
+  // });
+
+  // carousel.addEventListener("touchend", function () {
+  //   if (touchStartY - touchEndY > 50) {
+  //     if (currentIndex < slides.length - 1) {
+  //       currentIndex = (currentIndex + 1) % slides.length;
+  //     }
+  //   } else if (touchEndY - touchStartY > 50) {
+  //     if (currentIndex > 0) {
+  //       currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+  //     }
+  //   }
+  //   updateSlide(currentIndex);
+  // });
+
+  //arrow buttons
+  arrowLeft.addEventListener("click", function () {
+    if (currentIndex > 0) {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    } else {
+      currentIndex = slides.length - 1;
+    }
+    updateSlide(currentIndex);
   });
 
-  carousel.addEventListener("touchmove", function (event) {
-    touchEndY = event.touches[0].clientX;
-  });
-
-  carousel.addEventListener("touchend", function () {
-    if (touchStartY - touchEndY > 50) {
-      // Swipe up, next slide
-      if (currentIndex < slides.length - 1) {
-        currentIndex = (currentIndex + 1) % slides.length;
-      }
-    } else if (touchEndY - touchStartY > 50) {
-      // Swipe down, previous slide
-      if (currentIndex > 0) {
-        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-      }
+  arrowRight.addEventListener("click", function () {
+    if (currentIndex < slides.length - 1) {
+      currentIndex = (currentIndex + 1) % slides.length;
+    } else {
+      currentIndex = 0;
     }
     updateSlide(currentIndex);
   });
 });
+
 //===================================================================================

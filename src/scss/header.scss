@@ -1,14 +1,18 @@
 .header {
     height: 88px;
-    margin-bottom: 24px;
     padding-top: 24px;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
     // .header__container
 
     &__container {}
 
     // .header__menu
 
-    &__menu {}
+    &__menu {
+        align-items: center;
+    }
 }
 
 .menu {
